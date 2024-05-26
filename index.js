@@ -43,6 +43,9 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+app.get('/',(req,res)=>{
+  res.status(200).json({message:"pulse-link backend is working"})
+})
 /* ROUTES WITH FILES */
 app.post("/auth/register", upload.single("picture"), register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
